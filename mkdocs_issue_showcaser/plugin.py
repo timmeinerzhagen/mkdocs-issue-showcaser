@@ -17,7 +17,7 @@ class IssueShowcaserPlugin(BasePlugin):
     def __init__(self):
         self.enabled = True
 
-    def on_startup(self, config):
+    def on_startup(self, command, dirty):
         print("START")
         self.github_token = environ.get(self.config['env_github_token'])
         self.repo = self.config['repo']
