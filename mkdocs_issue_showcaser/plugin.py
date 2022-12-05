@@ -45,14 +45,13 @@ class IssueShowcaserPlugin(BasePlugin):
         print("DONE")
 
     def on_page_markdown(self, markdown, page, config, files):
-
-        issue_header = ""
         if page.file.src_uri in self.issues:
             issue_header = "<ul>"
             for issue in self.issues[page.file.src_uri]:
                 issue_header =  issue_header + '<li><a href="' + issue.url.replace('api.github.com/repos', 'github.com') + '">#' + str(issue.number) + " " + issue.title + "</a></li>"
             issue_header = issue_header + "</ul>"
 
-        header = '<div class="admonition bug"><p class="admonition-title">Open Issues for this page</p><p>These are currently open issues that affect this document: \n' + issue_header + '</p></div>'
+            header = '<div class="admonition bug"><p class="admonition-title">Open Issues for this page</p><p>These are currently open issues that affect this document: \n' + issue_header + '</p></div>'
 
-        return header + "\n\n" + markdown
+            markdown = header + "\n\n" + markdown
+        return markdown
