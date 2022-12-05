@@ -46,7 +46,13 @@ class IssueShowcaserPlugin(BasePlugin):
 
     def on_page_markdown(self, markdown, page, config, files):
 
+        issue_header = ""
         if page.file.src_uri in self.issues:
+            issue_header = "<ul>"
             for issue in self.issues[page.file.src_uri]:
-                markdown =  issue.title + "\n\n" + markdown
-        return markdown
+                issue_header =  '<li><a href="' + issue.url + '">#' + issue.number + " " + issue.title + "</li>\n" + issue_header
+            issue_header = issue_header + "<ul>"
+
+        header = '<div class="admonition info"><p class="admonition-title">Open Issues for this page</p><p>These are currently open issues that affect this document: \n' + issue_header + '</p></div>'
+
+        return header + "\n\n" + markdown
