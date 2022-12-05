@@ -18,17 +18,22 @@ class IssueShowcaserPlugin(BasePlugin):
         self.enabled = True
 
     def on_startup(self, config):
+        print("START")
         self.github_token = environ.get(self.config['env_github_token'])
         self.repo = self.config['repo']
+        print("EXCEPTION")
             
         if not self.github_token:
             raise Exception("No GitHub token found in environment variable '{}'".format(self.config['env_github_token']))
         
+        print("REQ")
         g = Github(self.github_token)
+        print("PROC")
         for issue in g.get_repo(self.repo).get_issues():
             print(issue)
-            print(re.findall('`([^"]*)`', issue.title))
-            print(re.findall('`([^"]*)`', issue.body))
+            #print(re.findall('`([^"]*)`', issue.title))
+            #print(re.findall('`([^"]*)`', issue.body))
+        print("DONE")
 
     def on_page_markdown(self, markdown, page, config, files):
 
