@@ -13,6 +13,7 @@ class IssueShowcaserPlugin(BasePlugin):
         ('env_github_token', config_options.Type(str, default="GITHUB_TOKEN")),
         ('repo', config_options.Type(str)),
     )
+    issues = dict()
 
     def __init__(self):
         self.enabled = True
@@ -37,8 +38,14 @@ class IssueShowcaserPlugin(BasePlugin):
                 body = re.findall('`([^"]*)`', issue.body)
 
             print(title + body)
+            for file in title + body:
+                if file not in self.issues:
+                    self.issues[file] = []
+                self.issues[file].append(issue)
         print("DONE")
 
     def on_page_markdown(self, markdown, page, config, files):
 
+        print(meta.source)
+        print(meta.source_path)
         return markdown
