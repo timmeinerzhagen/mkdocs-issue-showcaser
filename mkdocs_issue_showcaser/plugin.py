@@ -31,7 +31,7 @@ class IssueShowcaserPlugin(BasePlugin):
         print("PROC")
         for issue in g.get_repo(self.repo).get_issues():
             print(issue)
-            title = re.findall('`([^"]*)`', issue.title))
+            title = re.findall('`([^"]*)`', issue.title)
             body = []
             if issue.body:
                 body = re.findall('`([^"]*)`', issue.body)
