@@ -46,7 +46,7 @@ class IssueShowcaserPlugin(BasePlugin):
 
     def on_page_markdown(self, markdown, page, config, files):
 
-        if page.src_uri in self.issues:
-            for issue in self.issues[page.src_uri]:
+        if page.file.src_uri in self.issues:
+            for issue in self.issues[page.file.src_uri]:
                 markdown =  issue.title + "\n\n" + markdown
         return markdown
