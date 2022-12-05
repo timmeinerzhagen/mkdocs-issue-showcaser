@@ -46,6 +46,6 @@ class IssueShowcaserPlugin(BasePlugin):
 
     def on_page_markdown(self, markdown, page, config, files):
 
-        print(meta.source)
-        print(meta.source_path)
+        print(page.meta.source)
+        print(page.meta.source_path)
         return markdown
