@@ -17,7 +17,7 @@ setup(
     packages=find_packages(),
     entry_points={
         'mkdocs.plugins': [
-            'issue-showcaser = mkdocs_issue_showcaser:IssueShowcaserPlugin'
+            'issue-showcaser = mkdocs_issue_showcaser.plugin:IssueShowcaserPlugin'
         ]
     }
 )
