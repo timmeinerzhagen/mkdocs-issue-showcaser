@@ -31,8 +31,7 @@ class IssueShowcaserPlugin(BasePlugin):
         print("PROC")
         for issue in g.get_repo(self.repo).get_issues():
             print(issue)
-            print(re.findall('`([^"]*)`', issue.title))
-            print(re.findall('`([^"]*)`', issue.body))
+            print(re.findall('`([^"]*)`', issue.title + issue.body))
         print("DONE")
 
     def on_page_markdown(self, markdown, page, config, files):
