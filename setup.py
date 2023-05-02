@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name='devops-mkdocs-issue-showcaser',
+    name='mkdocs-issue-showcaser',
     version='0.1.0',
     description='MkDocs plugin for setting showcasing GitHub Issues on the corresponding pages.',
     long_description=long_description,
